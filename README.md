@@ -1,10 +1,6 @@
-<h1 align="center">
-    Getting Started with AWS EKS
-</h1>
-<p align="center" style="font-size: 1.2rem;"> The Amazon Web Services EKS service allows for simplified management of Kubernetes servers. </p>
-<hr />
+<p align="center"><img src="https://i.imgur.com/7994Qdm.png" /></p>
+<p align="center" style="font-size: 1.2rem;"> Terraform module for simplified management of Kubernetes servers using EKS </p>
 
-# Guide Overview
 
 ##### The sample architecture introduced here includes the following resources:
 
@@ -22,7 +18,7 @@ Cluster and worker node instances
 Now let's create a kubeconfig file for manging the EKS Cluster. Login to your kubectl node we created in step 4 and insert the codeblock to `.kube/config`
 <br>
 
-```
+```yml
 apiVersion: v1
 clusters:
 - cluster:
@@ -53,20 +49,20 @@ users:
 
 <br>
 
-```
+```sh
 Replace EKS_ENDPOINT_URL with your EKS Endpoint URL, BASE64_ENCODED_CA_CERT with certificateAuthority and CLUSTER_NAME with EKS Cluster name. You can get all these details from EKS Cluster Console.
 ```
 
 Save the configuration file and execute following commands to use it.
 
-```
+```sh
 export KUBECONFIG=$KUBECONFIG:~/.kube/config
 echo 'export KUBECONFIG=$KUBECONFIG:~/.kube/config' >> ~/.bashrc
 ```
 
 Now test your configuration
 
-```
+```sh
 kubectl get all
 ```
 If everything is fine, you will get your cluster details :)
