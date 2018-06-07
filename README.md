@@ -1,7 +1,7 @@
 <h1 align="center">
     Getting Started with AWS EKS
 </h1>
-<p align="center" style="font-size: 1.2rem;"> The Amazon Web Services EKS service allows for simplified management of Kubernetes servers. While the service itself is quite simple from an operator perspective, understanding how it interconnects with other pieces of the AWS service universe and how to configure local Kubernetes clients to managed clusters can be helpful. </p>
+<p align="center" style="font-size: 1.2rem;"> The Amazon Web Services EKS service allows for simplified management of Kubernetes servers. </p>
 <hr />
 
 # Guide Overview
