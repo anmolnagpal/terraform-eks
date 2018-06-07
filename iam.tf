@@ -7,7 +7,7 @@
 resource "aws_iam_role" "eks-cluster" {
   name = "eks-cluster"
   path = "./"
-  assume_role_policy = "${file("cluster-role-policy.json")}"
+  assume_role_policy = "${file("./json/cluster-role-policy.json")}"
 }
 resource "aws_iam_role_policy_attachment" "k8s-cluster-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "k8s-cluster-AmazonEKSServicePolicy" {
 resource "aws_iam_role" "eks-node" {
   name = "eks-node"
   path = "./"
-  assume_role_policy = "${file("node-role-policy.json")}"
+  assume_role_policy = "${file("./json/node-role-policy.json")}"
 }
 
 resource "aws_iam_role_policy_attachment" "eks-node-AmazonEKSWorkerNodePolicy" {
