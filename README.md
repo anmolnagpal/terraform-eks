@@ -10,3 +10,9 @@ The Amazon Web Services EKS service allows for simplified management of Kubernet
 - Associated VPC, Internet Gateway, Security Groups, and Subnets: Operator managed networking resources for the EKS 
 Cluster and worker node instances
 - Associated IAM Roles and Policies: Operator managed access resources for EKS and worker node instances
+
+## 👬 Contribution
+
+- Open pull request with improvements
+- Discuss ideas in issues
+- Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/anmol_nagpal.svg?style=social&label=Follow%20%40anmol_nagpal)](https://twitter.com/anmol_nagpal)
