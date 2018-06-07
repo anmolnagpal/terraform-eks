@@ -1,22 +1,27 @@
 <p align="center"><img src="https://i.imgur.com/7994Qdm.png" /></p>
-<p align="center" style="font-size: 1.2rem;"> Terraform module for simplified management of Kubernetes servers using EKS </p>
+
+> Terraform module for simplified management of Kubernetes servers using EKS
 
 
-##### The sample architecture introduced here includes the following resources:
+## 🔆 Highlights
 
-- EKS Cluster: AWS managed Kubernetes cluster of master servers
-- AutoScaling Group containing 2 m4.large instances based on the latest EKS Amazon Linux 2 AMI: Operator managed  Kuberneted worker nodes for running Kubernetes service deployments
-- Associated VPC, Internet Gateway, Security Groups, and Subnets: Operator managed networking resources for the EKS 
+- **EKS Cluster** AWS managed Kubernetes cluster of master servers
+- **AutoScaling Group** contains 2 m4.large instances based on the latest EKS Amazon Linux 2 AMI
+- **Associated VPC, Internet Gateway, Security Groups, and Subnets** Operator managed networking resources for the EKS 
 Cluster and worker node instances
-- Associated IAM Roles and Policies: Operator managed access resources for EKS and worker node instances
+- **Associated IAM Roles and Policies** Operator managed access resources for EKS and worker node instances
 
-<br>
 
-### Configure Kubectl
+### 🔰Getting Started
 
-<br>
-Now let's create a kubeconfig file for manging the EKS Cluster. Login to your kubectl node we created in step 4 and insert the codeblock to `.kube/config`
-<br>
+> Follow the steps below to get started
+
+#### 🔨 Setting Up Kubectl
+
+Create a kubeconfig file for manging the EKS Cluster. 
+
+Login to your kubectl node we created in step 4 and insert the codeblock to `.kube/config`
+
 
 ```yml
 apiVersion: v1
@@ -47,16 +52,15 @@ users:
         - ""
  ```
 
-<br>
 
-```sh
-Replace EKS_ENDPOINT_URL with your EKS Endpoint URL, BASE64_ENCODED_CA_CERT with certificateAuthority and CLUSTER_NAME with EKS Cluster name. You can get all these details from EKS Cluster Console.
-```
+
+Replace `EKS_ENDPOINT_URL` with your EKS Endpoint URL, `BASE64_ENCODED_CA_CERT` with `certificateAuthority` and `CLUSTER_NAME` with EKS Cluster name.
 
 Save the configuration file and execute following commands to use it.
 
 ```sh
 export KUBECONFIG=$KUBECONFIG:~/.kube/config
+
 echo 'export KUBECONFIG=$KUBECONFIG:~/.kube/config' >> ~/.bashrc
 ```
 
@@ -65,7 +69,9 @@ Now test your configuration
 ```sh
 kubectl get all
 ```
+
 If everything is fine, you will get your cluster details :)
+
 
 ## 👬 Contribution
 
