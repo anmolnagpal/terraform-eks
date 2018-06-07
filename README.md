@@ -15,7 +15,9 @@ Cluster and worker node instances
 - Associated IAM Roles and Policies: Operator managed access resources for EKS and worker node instances
 
 <br>
+
 ### Configure Kubectl
+
 <br>
 Now let's create a kubeconfig file for manging the EKS Cluster. Login to your kubectl node we created in step 4 and insert the codeblock to `.kube/config`
 <br>
