@@ -20,7 +20,7 @@ Cluster and worker node instances
 
 Create a kubeconfig file for manging the EKS Cluster. 
 
-Login to your kubectl node we created in step 4 and insert the codeblock to `.kube/config`
+Login to your kubectl node and insert the codeblock to `.kube/config`
 
 
 ```yml
