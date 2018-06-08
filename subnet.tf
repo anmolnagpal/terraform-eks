@@ -62,10 +62,10 @@ variable "subnet-1c-prv" {
   }
 }
 
-# Subnets with AZ-A
+# Subnets with AZ-C
 resource "aws_subnet" "subnet-1c-prv" {
   vpc_id            = "${aws_vpc.vpc.id}"
-  cidr_block        = "${var.subnet-1a-prv["cidr_block"]}"
+  cidr_block        = "${var.subnet-1c-prv["cidr_block"]}"
   availability_zone = "${var.region}c"
 
   tags {
@@ -91,7 +91,7 @@ resource "aws_route_table" "subnet-1c-prv" {
   }
 }
 
-# route table association Zone-A
+# route table association Zone-C
 resource "aws_route_table_association" "subnet-1c-prv" {
   subnet_id      = "${aws_subnet.subnet-1c-prv.id}"
   route_table_id = "${aws_route_table.subnet-1c-prv.id}"
