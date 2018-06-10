@@ -11,7 +11,7 @@
 Cluster and worker node instances
 - **Associated IAM Roles and Policies** Operator managed access resources for EKS and worker node instances
 
-### Architecture
+### 🎨 Architecture
 
 <p align="center"><img src="https://i.imgur.com/0eJ3ZAP.png" /></p>
 
