@@ -75,6 +75,9 @@ kubectl get all
 
 If everything is fine, you will get your cluster details :)
 
+### Setup K8s Dashboard
+- Refrence :
+    - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
 
 ## 👬 Contribution
 
