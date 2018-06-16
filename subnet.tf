@@ -4,24 +4,15 @@
 ##___) | |_| | |_) | |\  | |___  | |
 #|____/ \___/|____/|_| \_|_____| |_|
 
-variable "subnet-1a-prv" {
-  type = "map"
-
-  default = {
-    cidr_block = "10.0.32.0/20"
-  }
-}
-
 # Subnets with AZ-A
 resource "aws_subnet" "subnet-1a-prv" {
   vpc_id            = "${aws_vpc.vpc.id}"
-  cidr_block        = "${var.subnet-1a-prv["cidr_block"]}"
+  cidr_block        = "${var.vpc["subnet-1a-prv"]}"
   availability_zone = "${var.region}a"
 
   tags {
     Name        = "${var.env}-subnet-1a-prv"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 
@@ -37,7 +28,6 @@ resource "aws_route_table" "rt-1a-prv" {
   tags {
     Name        = "${var.env}-rt-app-1a-prv"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 
@@ -53,25 +43,15 @@ resource "aws_route_table_association" "rt-1a-prv" {
 ##___) | |_| | |_) | |\  | |___  | |
 #|____/ \___/|____/|_| \_|_____| |_|
 
-# Subnet VPC
-variable "subnet-1c-prv" {
-  type = "map"
-
-  default = {
-    cidr_block = "10.0.96.0/20"
-  }
-}
-
 # Subnets with AZ-C
 resource "aws_subnet" "subnet-1c-prv" {
   vpc_id            = "${aws_vpc.vpc.id}"
-  cidr_block        = "${var.subnet-1c-prv["cidr_block"]}"
+  cidr_block        = "${var.vpc["subnet-1c-prv"]}"
   availability_zone = "${var.region}c"
 
   tags {
     Name        = "${var.env}-subnet-1c-prv"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 
@@ -87,7 +67,6 @@ resource "aws_route_table" "subnet-1c-prv" {
   tags {
     Name        = "${var.env}-rt-1c-prv"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 

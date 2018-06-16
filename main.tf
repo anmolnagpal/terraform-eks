@@ -6,12 +6,11 @@
 
 # Create a VPC to launch our instances into
 resource "aws_vpc" "vpc" {
-  cidr_block = "${var.vpc}"
+  cidr_block = "${var.vpc["main"]}"
 
   tags {
-    Name        = "${var.env}-eks-cluster"
+    Name        = "${var.env}-vpc"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 
@@ -53,7 +52,6 @@ resource "aws_internet_gateway" "igw" {
   tags {
     Name        = "${var.env}-igw"
     Environment = "${var.env}"
-    ManagedBy   = "Terraform"
   }
 }
 
@@ -62,3 +60,4 @@ resource "aws_key_pair" "eks-prod-key" {
   key_name   = "${var.nodes_defaults["key_name"]}"
   public_key = "${file("./it-admin-key.pub")}"
 }
+

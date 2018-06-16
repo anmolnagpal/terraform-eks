@@ -4,18 +4,18 @@
 ####\ V / ___ \|  _ < | | / ___ \| |_) | |___| |___
 #####\_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|
 
-variable "cluster-name" {
-  default = "terraform-eks-demo"
-  type    = "string"
-}
-
 variable "region" {
   default     = "us-east-1"
   description = "Region"
 }
 
 variable "vpc" {
-  default = "10.0.0.0/16"
+  type = "map"
+  default = {
+    main          = "10.0.0.0/16"
+    subnet-1a-prv = "10.0.32.0/20"
+    subnet-1c-prv = "10.0.96.0/20"
+  }
 }
 
 variable "env" {
@@ -40,5 +40,14 @@ variable "nodes_defaults" {
     key_name             = "eks-key"      # The key name that should be used for the instances in the autoscaling group
     ebs_optimized        = true           # sets whether to use ebs optimization on supported types.
     public_ip            = false          # Associate a public ip address with a worker
+  }
+}
+
+variable "cluster_defaults" {
+  description = "Default values for target groups as defined by the list of maps."
+  type        = "map"
+
+  default = {
+    name = "eks-cluster" # Name for the eks cluster.
   }
 }
