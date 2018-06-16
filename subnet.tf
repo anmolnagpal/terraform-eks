@@ -21,7 +21,7 @@ resource "aws_subnet" "subnet-1a-prv" {
   tags {
     Name        = "${var.env}-subnet-1a-prv"
     Environment = "${var.env}"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_route_table" "rt-1a-prv" {
   tags {
     Name        = "${var.env}-rt-app-1a-prv"
     Environment = "${var.env}"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_subnet" "subnet-1c-prv" {
   tags {
     Name        = "${var.env}-subnet-1c-prv"
     Environment = "${var.env}"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
@@ -87,7 +87,7 @@ resource "aws_route_table" "subnet-1c-prv" {
   tags {
     Name        = "${var.env}-rt-1c-prv"
     Environment = "${var.env}"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 

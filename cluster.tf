@@ -17,8 +17,8 @@ resource "aws_security_group" "eks-cluster" {
   }
 
   tags {
-    Name = "${var.env}-eks-cluster"
-    Env  = "${var.env}"
+    Name      = "${var.env}-eks-cluster"
+    Env       = "${var.env}"
     ManagedBy = "Terraform"
   }
 }
@@ -28,13 +28,13 @@ resource "aws_security_group_rule" "cluster-ingress-node-https" {
   from_port                = 443
   protocol                 = "tcp"
   security_group_id        = "${aws_security_group.eks-cluster.id}"
-  source_security_group_id = "${aws_security_group.eks-node.id}"
+  source_security_group_id = "${aws_security_group.eks-nodes.id}"
   to_port                  = 443
   type                     = "ingress"
 }
 
 resource "aws_security_group_rule" "cluster-ingress-laptop-https" {
-  cidr_blocks       = ["${local.laptop-external-cidr}"]
+  cidr_blocks       = ["${var.external-ip}"]
   description       = "Allow laptop to communicate with the cluster API Server"
   from_port         = 443
   protocol          = "tcp"
@@ -61,5 +61,3 @@ resource "aws_eks_cluster" "eks-cluster" {
     "aws_iam_role_policy_attachment.k8s-cluster-AmazonEKSServicePolicy",
   ]
 }
-
-#

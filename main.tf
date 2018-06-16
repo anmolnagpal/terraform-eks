@@ -9,9 +9,9 @@ resource "aws_vpc" "vpc" {
   cidr_block = "${var.vpc}"
 
   tags {
-    Name = "${var.env}-eks-cluster"
-    Environment  = "${var.env}"
-    ManagedBy = "Terraform"
+    Name        = "${var.env}-eks-cluster"
+    Environment = "${var.env}"
+    ManagedBy   = "Terraform"
   }
 }
 
@@ -40,7 +40,6 @@ data "aws_availability_zones" "available" {}
 # See laptop-external-ip.tf for additional information.
 provider "http" {}
 
-
 ##___    ____  __        __
 #|_ _|  / ___| \ \      / /
 ##| |  | |  _   \ \ /\ / /
@@ -52,34 +51,14 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
-    Name = "${var.env}-igw"
+    Name        = "${var.env}-igw"
     Environment = "${var.env}"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
-
-##___ ____
-##|_ _|  _ \
-##| || |_) |
-##| ||  __/
-#|___|_|
-
-#
-# laptop External IP
-#
-# This configuration is not required and is
-# only provided as an example to easily fetch
-# the external IP of your local laptop to
-# configure inbound EC2 Security Group access
-# to the Kubernetes cluster.
-#
-
-data "http" "laptop-external-ip" {
-  url = "http://icanhazip.com"
-}
-
-# Override with variable or hardcoded value if necessary
-locals {
-  laptop-external-cidr = "${chomp(data.http.laptop-external-ip.body)}/32"
+## keypair for ec2
+resource "aws_key_pair" "eks-prod-key" {
+  key_name   = "${var.nodes_defaults["key_name"]}"
+  public_key = "${file("./it-admin-key.pub")}"
 }

@@ -14,19 +14,31 @@ variable "region" {
   description = "Region"
 }
 
-variable "key_name" {
-  default     = "it-admin-key"
-  description = "Default AWS Key"
-}
-
-variable "ami" {
-  default = "ami-dea4d5a1"
-}
-
 variable "vpc" {
   default = "10.0.0.0/16"
 }
 
 variable "env" {
   default = "live"
+}
+
+variable "external-ip" {
+  default = "5.194.139.128/32"
+}
+
+variable "nodes_defaults" {
+  description = "Default values for target groups as defined by the list of maps."
+  type        = "map"
+
+  default = {
+    name                 = "eks-nodes"    # Name for the eks workers.
+    ami_id               = "ami-dea4d5a1" # AMI ID for the eks workers. If none is provided, Terraform will searchfor the latest version of their EKS optimized worker AMI.
+    asg_desired_capacity = "1"            # Desired worker capacity in the autoscaling group.
+    asg_max_size         = "3"            # Maximum worker capacity in the autoscaling group.
+    asg_min_size         = "1"            # Minimum worker capacity in the autoscaling group.
+    instance_type        = "m4.large"     # Size of the workers instances.
+    key_name             = "eks-key"      # The key name that should be used for the instances in the autoscaling group
+    ebs_optimized        = true           # sets whether to use ebs optimization on supported types.
+    public_ip            = false          # Associate a public ip address with a worker
+  }
 }
