@@ -38,7 +38,7 @@ variable "nodes_defaults" {
     asg_min_size         = "1"            # Minimum worker capacity in the autoscaling group.
     instance_type        = "m4.large"     # Size of the workers instances.
     key_name             = "eks-key"      # The key name that should be used for the instances in the autoscaling group
-    ebs_optimized        = true           # sets whether to use ebs optimization on supported types.
+    ebs_optimized        = false          # sets whether to use ebs optimization on supported types.
     public_ip            = false          # Associate a public ip address with a worker
   }
 }
