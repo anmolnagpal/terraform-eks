@@ -75,12 +75,12 @@ kubectl get all
 
 If everything is fine, you will get your cluster details :)
 
-### Setup K8s Dashboard
 - Refrence :
     - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
+    - https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-06-05/amazon-eks-nodegroup.yaml
 
 ## 👬 Contribution
-
 - Open pull request with improvements
 - Discuss ideas in issues
+
 - Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/anmol_nagpal.svg?style=social&label=Follow%20%40anmol_nagpal)](https://twitter.com/anmol_nagpal)
