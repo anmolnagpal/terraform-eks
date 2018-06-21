@@ -8,10 +8,13 @@
 resource "aws_vpc" "vpc" {
   cidr_block = "${var.vpc["main"]}"
 
-  tags {
-    Name        = "${var.env}-vpc"
-    Environment = "${var.env}"
-  }
+  tags = "${
+    map(
+     "Name", "${var.env}-vpc",
+     "Environment", "${var.env}",
+     "kubernetes.io/cluster/${var.cluster_defaults["name"]}", "shared"
+    )
+  }"
 }
 
 # ____  ____   _____     _____ ____  _____ ____

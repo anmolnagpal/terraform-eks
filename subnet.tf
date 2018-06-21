@@ -10,10 +10,13 @@ resource "aws_subnet" "subnet-1a-prv" {
   cidr_block        = "${var.vpc["subnet-1a-prv"]}"
   availability_zone = "${var.region}a"
 
-  tags {
-    Name        = "${var.env}-subnet-1a-prv"
-    Environment = "${var.env}"
-  }
+  tags = "${
+    map(
+     "Name", "${var.env}-rt-1a-prv",
+     "Environment", "${var.env}",
+     "kubernetes.io/cluster/${var.cluster_defaults["name"]}", "shared"
+    )
+  }"
 }
 
 ##  route table association
@@ -26,7 +29,7 @@ resource "aws_route_table" "rt-1a-prv" {
   }
 
   tags {
-    Name        = "${var.env}-rt-app-1a-prv"
+    Name        = "${var.env}-rt-1a-prv"
     Environment = "${var.env}"
   }
 }
@@ -49,10 +52,13 @@ resource "aws_subnet" "subnet-1c-prv" {
   cidr_block        = "${var.vpc["subnet-1c-prv"]}"
   availability_zone = "${var.region}c"
 
-  tags {
-    Name        = "${var.env}-subnet-1c-prv"
-    Environment = "${var.env}"
-  }
+  tags = "${
+    map(
+     "Name", "${var.env}-rt-1c-prv",
+     "Environment", "${var.env}",
+     "kubernetes.io/cluster/${var.cluster_defaults["name"]}", "shared"
+    )
+  }"
 }
 
 ##  route table association

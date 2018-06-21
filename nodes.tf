@@ -21,10 +21,13 @@ resource "aws_security_group" "eks-nodes" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
-    Name        = "${var.nodes_defaults["name"]}-sg"
-    Environment = "${var.env}"
-  }
+  tags = "${
+    map(
+     "Name", "${var.nodes_defaults["name"]}-sg",
+     "Environment", "${var.env}",
+     "kubernetes.io/cluster/${var.cluster_defaults["name"]}", "owned"
+    )
+  }"
 }
 
 resource "aws_security_group_rule" "ingress-self" {
